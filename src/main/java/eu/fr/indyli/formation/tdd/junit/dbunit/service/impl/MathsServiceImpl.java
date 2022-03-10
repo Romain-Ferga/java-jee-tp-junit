@@ -22,13 +22,53 @@ public class MathsServiceImpl implements IMathsService {
   }
 
   public Boolean isPrimeNumber(Integer numP) throws MathException {
-    // TODO 1: Codez cette fonction <b>isPrimeNumber</b>
-    return Boolean.FALSE;
+	  
+	  Boolean isPrimeNumber = Boolean.TRUE;
+	  
+	  if(numP < 0) throw new MathException("Le paramètre ne peut pas être négatif");
+	  else if(numP < 1) {
+		  
+		  isPrimeNumber = Boolean.FALSE;
+		  return isPrimeNumber;
+		  
+	  }else {
+		  
+		  for(int i = 2; i <= numP / 2; i++) {
+			  
+			  if((numP % i) == 0) {
+				  
+				  isPrimeNumber = Boolean.FALSE;
+				  
+				  break;
+				  
+			  }
+			  
+		  }
+		  
+		  return isPrimeNumber;
+		  
+	  }
+	  
   }
 
   public Integer sumOfNFirstPrimeNumber(Integer numP) throws MathException {
-    // TODO 2 : Codez cette fonction
-    return 0;
+	  
+	  if(numP < 0) throw new MathException("Le paramètre ne peut être négatif..");
+	  else if(numP == 0) return 0;
+	  else {
+	  
+		  int sum = 0;
+		  
+		  for(int i = 0; i <= numP; i++) {
+			  
+			  if(this.isPrimeNumber(i)) sum += i;
+			  
+		  }
+	  
+		  return sum;
+		  
+	  }
+    
   }
 
   public Integer average(Integer number1, Integer number2) {
@@ -37,7 +77,7 @@ public class MathsServiceImpl implements IMathsService {
 
   public Integer factorial(Integer numP) throws MathException {
     if (numP < 0) {
-      throw new MathException("Le numbre ne peut �tre n�gatif");
+      throw new MathException("Le numbre ne peut �tre n�gatif");
     }
     if (numP == 0)
       return (1);
